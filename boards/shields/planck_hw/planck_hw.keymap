@@ -6,6 +6,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/studio.h>
 
 #define DEFAULT 0
 #define LOWER   1
@@ -13,24 +14,37 @@
 #define ADJUST  3
 
 / {
+    combos {
+        compatible = "zmk,combos";
+        
+        // Press Lower + Raise together to unlock ZMK Studio
+        combo_studio_unlock {
+            timeout-ms = <50>;
+            key-positions = <40 42>;  // Lower (pos 40) + Raise (pos 42)
+            bindings = <&studio_unlock>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
+            display-name = "Base";
             // -----------------------------------------------------------------------------------------
             // |  TAB  |  Q   |  W   |  E   |  R   |  T   |   Y   |  U    |  I   |  O   |   P   | BSPC  |
             // |  ESC  |  A   |  S   |  D   |  F   |  G   |   H   |  J    |  K   |  L   |   ;   |  '    |
             // | SHIFT |  Z   |  X   |  C   |  V   |  B   |   N   |  M    |  ,   |  .   |   /   | ENTER |
             // |       | CTRL | ALT  | GUI  | LOWR |    SPACE     | RAISE | LEFT | DOWN |  UP   | RIGHT |
             bindings = <
-                &kp TAB   &kp Q     &kp W    &kp E    &kp R  &kp T   &kp Y     &kp U  &kp I     &kp O    &kp P     &kp BSPC
-                &kp ESC   &kp A     &kp S    &kp D    &kp F  &kp G   &kp H     &kp J  &kp K     &kp L    &kp SEMI  &kp SQT
-                &kp LSHFT &kp Z     &kp X    &kp C    &kp V  &kp B   &kp N     &kp M  &kp COMMA &kp DOT  &kp SLASH &kp RET
-                &none     &kp LCTRL &kp LALT &kp LGUI &mo 1  &kp SPACE &kp SPACE &mo 2  &kp LEFT  &kp DOWN &kp UP    &kp RIGHT
+                &kp TAB   &kp Q     &kp W    &kp E    &kp R  &kp T   &kp Y   &kp U  &kp I     &kp O    &kp P     &kp BSPC
+                &kp ESC   &kp A     &kp S    &kp D    &kp F  &kp G   &kp H   &kp J  &kp K     &kp L    &kp SEMI  &kp SQT
+                &kp LSHFT &kp Z     &kp X    &kp C    &kp V  &kp B   &kp N   &kp M  &kp COMMA &kp DOT  &kp SLASH &kp RET
+                &none     &kp LCTRL &kp LALT &kp LGUI &mo 1  &kp SPACE       &mo 2  &kp LEFT  &kp DOWN &kp UP    &kp RIGHT
             >;
         };
 
         lower_layer {
+            display-name = "Lower";
             // -----------------------------------------------------------------------------------------
             // |   ~   |  !   |  @   |  #   |  $   |  %   |   ^   |   &   |  *   |  (   |   )   |  DEL  |
             // |  DEL  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6   |   _   |  +   |  {   |   }   |  |    |
@@ -40,11 +54,12 @@
                 &kp TILDE &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp DEL
                 &kp DEL   &kp F1   &kp F2 &kp F3   &kp F4   &kp F5    &kp F6    &kp UNDER &kp PLUS  &kp LBRC &kp RBRC &kp PIPE
                 &trans    &kp F7   &kp F8 &kp F9   &kp F10  &kp F11   &kp F12   &trans    &trans    &kp HOME &kp END  &trans
-                &trans    &trans   &trans &trans   &trans   &trans    &trans    &mo 3     &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_PP
+                &trans    &trans   &trans &trans   &trans   &trans              &mo 3     &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_PP
             >;
         };
 
         raise_layer {
+            display-name = "Raise";
             // -----------------------------------------------------------------------------------------
             // |   `   |  1   |  2   |  3   |  4   |  5   |   6   |   7   |  8   |  9   |   0   | BSPC  |
             // |  DEL  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6   |   -   |  =   |  [   |   ]   |  \    |
@@ -54,11 +69,12 @@
                 &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4  &kp N5  &kp N6  &kp N7    &kp N8    &kp N9    &kp N0   &kp BSPC
                 &kp DEL   &kp F1 &kp F2 &kp F3 &kp F4  &kp F5  &kp F6  &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH
                 &trans    &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &trans    &trans    &kp PG_UP &kp PG_DN &trans
-                &trans    &trans &trans &trans &mo 3   &trans  &trans  &trans    &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_PP
+                &trans    &trans &trans &trans &mo 3   &trans          &trans    &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_PP
             >;
         };
 
         adjust_layer {
+            display-name = "Adjust";
             // -----------------------------------------------------------------------------------------
             // | RESET |      |      |      |      |      |       |       |      |      |       | BTCLR |
             // | BOOTL |      |      |      |      |      |       |       |      |      |       |       |
@@ -68,7 +84,7 @@
                 &sys_reset  &none &none &none &none &none &none &none &none        &none        &none        &bt BT_CLR
                 &bootloader &none &none &none &none &none &none &none &none        &none        &none        &none
                 &none       &none &none &none &none &none &none &none &none        &none        &none        &none
-                &none       &none &none &none &trans &none &none &trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
+                &none       &none &none &none &trans &none       &trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
             >;
         };
     };
