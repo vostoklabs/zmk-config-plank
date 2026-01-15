@@ -1,0 +1,9 @@
+file_format: "1"
+id: planck_hw
+name: Planck Handwired
+type: shield
+url: https://github.com/vostoklabs/zmk-config-plank
+requires:
+  - nrf52840
+features:
+  - keys
