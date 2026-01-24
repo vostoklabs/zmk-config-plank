@@ -46,29 +46,29 @@
             display-name = "Lower";
             // -----------------------------------------------------------------------------------------
             // |       |  1   |  2   |  3   |  4   |  5   |   6   |   7   |  8   |  9   |   0   | BSPC  |
-            // | BTCLR | BT1  | BT2  | BT3  | BT4  | BT5  |       |       |      |  {   |   }   |   \   |
-            // |       |      |      |      |      |      |       |       |      | VOL+ | PRSC  |       |
+            // | BTCLR | BT1  | BT2  | BT3  | BT4  | BT5  |       |       |      |  {   |   }   | ENTER |
+            // |       |      |      |      |      |      |       |       |      |      | VOL+  | PRSC  |
             // |       |      |      |      |      |      |       |       |      | VOL- |       |
             bindings = <
-                &trans     &kp N1       &kp N2       &kp N3       &kp N4       &kp N5       &kp N6 &kp N7 &kp N8 &kp N9       &kp N0    &kp BSPC
-                &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans &trans &trans &kp LBRC     &kp RBRC  &kp BSLH
-                &trans     &trans       &trans       &trans       &trans       &trans       &trans &trans &trans &kp C_VOL_UP &kp PSCRN &trans
-                &trans     &trans       &trans       &trans       &trans       &trans              &trans &trans &trans       &kp C_VOL_DN  &trans
+                &trans     &kp N1       &kp N2       &kp N3       &kp N4       &kp N5       &kp N6 &kp N7 &kp N8 &kp N9 &kp N0       &kp BSPC
+                &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans &trans &trans &kp LBRC &kp RBRC     &trans
+                &trans     &trans       &trans       &trans       &trans       &trans       &trans &trans &trans &trans   &kp C_VOL_UP &kp PSCRN
+                &trans     &trans       &trans       &trans       &trans       &trans              &trans &trans &trans   &kp C_VOL_DN &trans
             >;
         };
 
         raise_layer {
             display-name = "Raise";
             // -----------------------------------------------------------------------------------------
-            // |  ESC  |  1   |  2   |  3   |  4   |  5   |   6   |   7   |  8   |  9   |   0   | BSPC  |
-            // |       |      |      |      |      |      |   -   |   -   |  {   |  }   |   \   |       |
-            // |       |      |      |      |      |      |   =   |   =   |  '   | VOL+ | PRSC  |       |
+            // |  ESC  |  !   |  @   |  #   |  $   |  %   |   ^   |   &   |  *   |  (   |   )   | BSPC  |
+            // |       |      |      |      |      |      |   -   |   _   |  {   |  }   |   \   |       |
+            // |       |      |      |      |      |      |   =   |   +   |  '   |      | VOL+  | PRSC  |
             // |       |      |      |      |      |      |       |       |      | VOL- |       |
             bindings = <
-                &kp ESC &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6    &kp N7    &kp N8  &kp N9       &kp N0    &kp BSPC
-                &trans  &trans &trans &trans &trans &trans &kp MINUS &kp MINUS &kp LBRC &kp RBRC    &kp BSLH  &trans
-                &trans  &trans &trans &trans &trans &trans &kp EQUAL &kp EQUAL &kp SQT  &kp C_VOL_UP &kp PSCRN &trans
-                &trans  &trans &trans &trans &trans &trans           &trans    &trans   &trans       &kp C_VOL_DN  &trans
+                &kp ESC &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
+                &trans  &trans   &trans &trans   &trans   &trans    &trans    &kp MINUS &kp UNDER &kp LBRC &kp RBRC &kp BSLH
+                &trans  &trans   &trans &trans   &trans   &trans    &trans    &kp EQUAL &kp PLUS  &kp SQT  &kp C_VOL_UP &kp PSCRN
+                &trans  &trans   &trans &trans   &trans   &trans              &trans    &trans    &trans   &kp C_VOL_DN &trans
             >;
         };
 
